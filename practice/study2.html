@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	/*var age=55;
+	if(age>60){
+		console.log("可以退休");
+	}else{
+		console.log("不可以退休");
+	}
+	var cmd='stop';
+	switch(cmd){
+		case 'stop': console.log("停止");break;
+		case 'start': console.log("开始");break;
+		default: console.log("命令不能识别！");break;
+	}*/
+	var person = {
+		name:'ivan',
+		age:30,
+		city:'chengdu'
+	}
+	for(var key in person){
+		console.log("person."+key+" =  "+person[key]);
+	}
+
+	var gratePeson=new Object();
+	gratePeson.CET4 = 456;
+	gratePeson.age = 38;
+	gratePeson.work = 8;
+
+	function grateP(CET4,age,work){
+		var  obj = new Object();
+		obj.CET4 = CET4;
+		obj.age = age;
+		obj.work = work;
+		//console.log(obj);
+		return obj;
+	}
+	//grateP(489,56,5);
+
+
+	function zhaoPin(obj){
+		//判断是否符合招聘的条件
+		if(obj.CET4>=425 && obj.age<40 && obj.work>=2){
+			console.log("条件符合，可以录用！");
+		}
+		else{
+			console.log("不符合招聘的条件！");
+		}
+	}
+
+	//zhaoPin(gratePeson);
+	zhaoPin(grateP(119,23,3));
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>属性值动画效果</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+}
+#title{
+	width:300px;
+	height:300px;
+	background:#39F;
+	margin:10px;
+	float:left;	
+	border:4px solid #F6C;
+}
+</style>
+
+<script type="text/javascript">
+window.onload=function (){
+   startMove();	
+}
+
+/*function getStyle(obj,attr){
+   if(obj.currentStyle) {
+	  return obj.currentStyle[attr];   
+   }else {
+	  return obj.getComputedStyle(obj,false)[attr];
+   }
+}*/
+
+function startMove() {
+   setInterval(function () {
+	  var title=document.getElementById("title");
+	  //alert(title.style.width);
+	  title.style.width=parseInt(title.style.width)-1+"px";
+	  //title.style.width=parseInt(getStyle(title,'width'))-1+"px";
+	   },50);	
+}
+
+
+</script>
+</head>
+
+<body>
+ <div id="title" style="width:300px"></div>
+</body>
+</html>

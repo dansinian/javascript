@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+/*		var num = [2,3,5,88];
+		console.log(num);
+		for(var i=0;i<num.length;i++){	
+		//数组的遍历
+			console.log(num[i]);
+		}
+
+		//使用new Array的方式创建
+		var students = new Array('lili','yzg','ivan');
+		console.log(students);
+		students[2]='wangwei';
+		console.log(students);
+
+		var worker = ['lili',
+					[2,3],
+					[5,6,function(){
+						console.log('fn ....');
+					}],
+					{name:'ivan',age:30}
+		];
+		console.log(worker);
+		console.log(worker[2][2]);
+		console.log(worker[2][2]());*/
+//数组的添加和删除
+/*		var stu=['lili','xiaoming','ivan'];
+		stu.push('wangwei');	//尾部添加
+		console.log(stu);
+		stu.pop('xiaoming');	//指定删除
+		console.log(stu);
+		stu.pop();//尾部删除
+		console.log(stu);
+
+		stu.unshift(222);	//头部添加
+		console.log(stu);
+		stu.shift(222);	//头部删除
+		console.log(stu);
+*/
+//============数组元素的更改
+/*		var worker=['wanggang','lili','ivan','yzg','7879','dhgf','dfhdgf','dsws'];
+		console.log(worker);
+		worker.splice(1,0,'001');
+		console.log(worker);
+		worker.splice(2,3,'002');
+		console.log(worker);*/
+//===============数组元素的排序
+/*		var age = [19,20,45,78,35,21,18];
+		console.log(age);
+		age.sort();//升序排序
+		console.log(age);
+		age.reverse();//降序排序
+		console.log(age);
+
+		var worker=['wanggang','lili','ivan','yzg','7879','dhgf','dfhdgf','dsws'];
+		console.log(worker);
+		worker.sort();
+		console.log(worker);*/
+//操作数组的方法（不改变原数组）
+/*		var arr=[12,56,11];
+		console.log(arr.indexOf(56));
+		console.log(arr.indexOf(55));//找不到的时候就会自动返回-1*/
+//------------数组元素的选取
+		/*var age=[13,10,23,32,10];
+		console.log(age);
+		console.log(age.slice(1,3));
+		console.log(age.slice(0,3));//开始位置和结束位置（不包括两端的本身）
+		console.log(age.slice(3));*/
+//数组元素间添加分隔符后，得到新字符串
+/*		var  stu = ['lili','ivan','yzg'];
+		console.log(stu);
+		console.log(stu.join(':'));
+		var age=[19,20,22,50,11];
+		var age1 = age.join("--");
+		console.log(age+" "+typeof age);
+		console.log(age1+" "+typeof age1);
+		//函数实现join
+		function join(a,se){
+			var str='';
+			for(var i=0;i<a.length;i++){
+				if(i!=a.length-1)
+					str += a[i]+se;
+				else
+					str +=a[i]
+
+			}
+			return str;
+			
+		}
+
+		console.log(join(stu,':'));*/
+//遍历数组
+		/*var score=[77,44,34,54,65,200];
+		var a=[];
+
+		function callback(v){
+			console.log(v);
+		}
+		/*function callback(v){
+			a.push(v*2);
+			console.log(v);
+		}*/
+		/*score.forEach(callback);//遍历
+		console.log(a);
+
+		function forEach(a,fn){
+			for(var i=0;i<a.length;i++){
+				fn(a[i]);
+			}
+		}
+		forEach(score,callback);*/
+
+//遍历数组元素进行转换
+		/*var num=[3,8,10,15];
+		var numDouble = num.map(function(x){return x*2;});
+		console.log(numDouble);
+		console.log(num);
+		//实现map函数
+		function map(a,callback){
+			var n=[];
+			for(var i=0;i<a.length;i++){
+				n[i] = callback(a[i]);
+			}
+			return n;
+		}
+		console.log(map(num,function(x){return x*2;}));*/
+//====================>面试题
+	//数组去重
+		/*var age = [30,25,25,34,22,18,19,18];
+		//方法1：不适用系统提供的函数
+		function checkHaveElement(a,e){
+			for(var i=0;i<a.length;i++){
+				if(a[i]===e){
+					return true;
+				}
+			}
+			return false;
+		}
+		function delRepeat(a){
+			var n=[];
+			for(var i=0;i<a.length;i++){
+				if(!checkHaveElement(n,a[i])){
+					n[n.length]=a[i];
+				}
+				
+			}
+			return n;
+		}
+		console.log(age);
+		console.log(delRepeat(age));
+		//方法二：利用系统函数
+		function delRepeatSys(a){
+			var n=[];
+			for(var i=0;i<a.length;i++){
+				if(n.indexOf(a[i])==-1){
+					n.push(a[i]);
+				}
+			}
+			return n;
+		}
+		console.log(delRepeatSys(age));*/
+//=================================>数组的复制
+/*		var worker = 'ivan';
+		var age=10;
+		var age2=age;
+		console.log(age)
+		age2+=3;
+		console.log(age2);
+
+		var age3=[32,18,17,22];//引用类型
+		var age4=age3;
+		console.log(age3);
+		age3[1]=100;
+		console.log(age4);*/
+		//---------------浅度复制方法1：
+/*		var stu = ['lili','ivan','yzg',30,20];
+		var n=[];
+		for(var i=0;i<stu.length;i++){
+			//n[n.length]=stu[i];
+			n.push(stu[i]);
+		}
+		console.log(n);
+		console.log(stu)
+		stu[3]=100;
+		console.log(n);
+		console.log(stu);*/
+		//---------------深度复制(如多维数组)
+//var bookGuizi = [[12,'ivan'],[13,14,15],[14,[15,16],{name:'ivan',age:30}]];
+			//利用系统函数
+			
+/*		function deepFind(a){
+			var n=[];
+			for(var i=0;i<a.length;i++){
+				n.push(a[i]);
+			}
+			return n;
+		}
+		var newArr=deepFind(bookGuizi);
+		console.log(newArr);
+		console.log(newArr[2][1][0]);
+		console.log(newArr[2][2].name);*/
+
+//var bookGuizi = [[12,'ivan'],[13,14,15],[14,[15,16],{name:'ivan',age:30}]];
+//var book1=[25,33,22];
+			//方法二：不用系统函数
+	/*	function deepClone(a){
+			var n=[];
+			for(var i=0;i<a.length;i++){
+				if(a[i] instanceof Array){
+					n[n.length]=deepClone(a[i]);
+					//n[n.length]=deepClone(a);
+				}
+				else{
+					n[n.length]=a[i];	
+				}
+				
+			}
+			return n;
+		}*/
+		/*var b=deepClone(book1)
+		console.log(b);
+		console.log(book1);
+		b[1]=22;
+		console.log(b);
+		console.log(book1);*/
+
+
+		/*var b=deepClone(bookGuizi);
+		console.log(b);
+		b[0][0]=21;
+		console.log(bookGuizi);
+		console.log(bookGuizi[0][0]);
+		console.log(b);
+		console.log(b[0][0]);*/
+
+//===========================数组排序（冒泡）
+		var a=[3,6,2,4,1,5];
+		function sort(a){
+			var temp;
+			for(var i=0;i<a.length;i++){
+				for(var j=i+1;j<a.length;j++){
+					if(a[i]<a[j]){
+						temp=a[i];
+						a[i]=a[j];
+						a[j]=temp;
+					}
+				}
+			}
+			return a;
+		}
+		console.log(sort(a));
+	</script>
+</body>
+</html>

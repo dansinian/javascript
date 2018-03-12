@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>任意值动画效果</title>
+<style type="text/css">
+ul{list-style:none;}
+li{
+  width:300px;
+  height:150px;
+  background:#F6C;
+  margin-top:20px;	
+  border:2px solid #000;
+}
+</style>
+<script type="text/javascript">
+window.onload=function () {
+  var Li1=document.getElementById("li1");
+  var Li2=document.getElementById("li2");
+  Li1.onmouseover=function () {
+	  widthmove(this,400);  
+  }
+  Li1.onmouseout=function() {
+	 widthmove(this,200);  
+  }
+  
+  Li2.onmouseover=function () {
+	 heightmove(this,300);  
+  }
+  Li2.onmouseout=function() {
+	 heightmove(this,100);  
+  }
+}
+
+/*function getStyle(obj,attr) {
+   if(obj.currentStyle) {
+	  return obj.currentStyle[attr];   
+   }else {
+	  return obj.getComputedStyle(obj,false)[attr];   	   
+   }
+}*/
+
+var timer=null;
+function widthmove(obj,Target){
+   	clearInterval(timer);
+	timer=setInterval(function () {
+		var icrn=parseInt(obj.style.width);
+		var speed=(Target-icrn)/2;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		if(Target==icrn) {
+		    clearInterval(timer);	
+		}else {
+			obj.style.width=icrn+speed+"px";
+		}
+		},50);
+}
+
+function heightmove(obj,Target){
+   	clearInterval(timer);
+	timer=setInterval(function () {
+		var icrn=parseInt(obj.style.height);
+		var speed=(Target-icrn)/2;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		if(Target==icrn) {
+		    clearInterval(timer);	
+		}else {
+			obj.style.height=icrn+speed+"px";
+		}
+		},50);
+}
+</script>
+</head>
+
+<body>
+<ul>
+  <li id="li1" style=" width:300px;"></li>
+  <li id="li2" style="height:150px;"></li>
+</ul>
+</body>
+</html>

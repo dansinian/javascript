@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数</title>
+</head>
+<body>
+	
+<script>
+/*//定义函数
+	function drvierCar(){
+		console.log("I can driver car !");
+	}
+//调用函数
+	drvierCar();
+	*/
+	function start(name){ //定义函数：开启某个设备
+		console.log(name+"被开启了！");
+	}
+	start('服务器');
+
+	//函数传参数
+	function sum(x,y){ return x+y; }
+	console.log(sum(3,5));
+//例子：做菜
+	function doDinner(name){
+		console.log('I do dinner '+name);
+	}
+	var eat=['fish','红烧肉','醋溜白菜'];
+	for(var eat1 in eat){
+		doDinner(eat[eat1]);
+	}
+
+//例子：迁户口
+	function getHukou(){
+		console.log('办理迁户口');
+		//办理准迁证；
+		var parper = doPermitPaper('原户口','身份证');
+		//迁出证；
+		if(parper=='permitParper'){
+			parper = doOutParper(parper);
+		}else{
+			return ;
+		}
+		//办理上户；
+		if(parper=='outParper'){
+			inHuKou(parper);
+		}else{
+			return ;
+		}
+		
+	}
+	function doPermitPaper(from,id){	//办理准迁证
+		console.log('办理准迁证');
+		if(from=='原户口'  && id=='身份证'){
+			console.log('办理准迁证成功');
+			return 'permitParper';
+		}
+		else{
+			console.log('办理准迁证失败');
+			return false;
+		}
+	}
+
+	function doOutParper(parper){	//办理迁出证
+		console.log('办理迁出证');
+		if(parper=='permitParper'){
+			console.log('办理迁出证成功');
+			return 'outParper';
+		}
+		else{
+			return false;
+		}
+	}
+
+	function inHuKou(parper){	//办理上户
+		console.log('办理上户');
+		if(parper=='outParper'){
+			console.log('上户成功');
+		}
+		else{
+			console.log('上户失败');
+		}
+	}
+	getHukou();
+
+//查询高考成绩；约会看电影；打魔兽对战游戏；办大学入学手续；
+
+//匿名函数
+	/*var start = function(){
+		console.log('start');
+	}
+	start();*/
+
+//具名函数表达式
+	/*var fn = function fnn(x){
+		console.log('fnn ....  go'+x);
+		arguments.callee();
+	}
+	fn(1);*/
+	//fnn(2);  	这样就会发生错误
+	//
+//对象的方法
+	/*var person={
+		name:'ivan',
+		driver:function(c){
+			console.log("i can driver "+c);
+			
+			这样会死循环
+			this.driver();
+			 
+		}
+	}
+	console.log(person.name);
+	person.driver('bus');*/
+//==============函数传参
+	/*var n='yad';
+	function fn(n){
+		console.log(n);
+		n='ivan';
+		console.log(n);
+	}
+	fn(n);
+	console.log(n);*/
+//======================传参 引用类型
+	/*var person = {
+		name:'lili',
+		age:30
+	}
+	function changeName(p){
+		p.name = 'xiaoming';
+		console.log('change after p.name = ' + p.name)
+	}
+	console.log(person);	//	传递的是地址
+	changeName(person);
+	console.log(person);*/
+//
+
+	
+/*	var f=true;
+	if(f===true){
+		var a = 10;
+	}
+	function fn(){
+		var b=20;
+		c=30;
+	}
+	fn();
+	console.log(a);
+	//console.log(b);
+	console.log(c);*/
+
+	/*var x=1;
+	function scopeTest(){
+		alert(x);
+		var x='hello world';
+		alert(x);
+	}
+	scopeTest();*/
+
+
+/*	var name='laruence'; //1
+	function echo(){
+		alert(name);
+	}
+	function env(){
+		var name='eve';
+		echo();
+	}
+	env(); */
+	//echo();
+
+/*	var m=0.4,n=0.3,x=0.2,y=0.1;
+	console.log(m-n);
+	console.log(x-y);
+	console.log(0.3-0.2);*/
+
+/*5题
+	var a='' + 3;
+	var b= 4;
+	console.log(typeof(a));
+	console.log(a+b);
+	console.log(a-b);
+
+	var foo = '11'+2+'1';
+	console.log(foo);
+	console.log(typeof(foo));*/
+
+/*	6.题
+	var obj1 = new Object();
+	obj1.name = 'zizhome';
+	var obj2 = obj1;
+	console.log(obj2.name);
+	obj1.name = 'zjz';
+	console.log(obj2.name);*/
+
+/*7.题
+	var x=8;
+	var objA = {
+		x:'good',
+		y:32
+	}
+	function add(x,y){
+		console.log(x.y+y);
+	}
+	function fn(x,y){
+		x.y=5;
+		y(x,3);
+	}
+	fn(objA,add);
+	console.log(objA);*/
+
+/*	8.题
+	function changeObjectProperty (o) {
+		o.siteUrl = "http://www.csser.com/";
+		o = new Object(); 
+		o.siteUrl = "http://www.popcg.com/"; 
+	}
+	var CSSer = new Object(); 
+	changeObjectProperty(CSSer);
+	console.log(CSSer.siteUrl); */
+
+//9题
+/*	function foo(){
+		return 
+		{
+			bar: "hello"
+		};
+	}*/	
+//10题
+/*	function sum(x,y){
+		return x+y;
+	}
+	console.log(sum(2,3));
+	function sum2(){
+
+	}
+	sum(2)(3);*/
+//11题
+/*	function t(flag){ 
+	if(flag){ 
+	var s="ifscope"; 
+	for(var i=0;i<2;i++) 
+	; 
+	} 
+	console.log(i); 
+	console.log(s); 
+	} 
+	t(true); */
+
+//12题
+/*	var num=5;
+	function func1(){
+		var num=3;
+		var age =4;
+		function func2(){
+			console.log(num);	//undefined
+			var num ='ivan';
+			function func3(){
+				age =6;	
+			}
+			func3();
+			console.log(num);	//ivan
+			console.log(age);	//6
+		}
+		func2();
+	}
+	func1();*/
+//13题
+/*	var count =[32,4,8];
+
+	function out(){
+		console.log('i='+i);
+	}
+	function getCount(callback){
+		num =2;
+		console.log(num);	//2
+		for(i=1;i < count.length;i++){
+			if(num==i){
+				count[i] =num;	//count[2]=2
+;				continue;
+			}
+			count[i]=	callback; // =count[1]=out
+		}
+		var num = 'hello';
+		console.log(num);	//hello
+	}
+	getCount(out);
+	count[1]();
+	count[2]();
+	count[0]();	 
+*/
+//14题
+/*	var fn1 = 'ivan';
+	var name ='good';
+	var fn1 = function(y){
+		y();
+	} 
+	function fn1(x){ 
+		x(name);	
+	}
+
+	function fn2(x){
+		console.log(x); 	//undefined
+		console.log(name);	//undefined
+		var name = 'hello';
+		console.log(name);	//hello
+	}
+	fn1(fn2);
+*/
+//15题
+	/*(function(){
+		var a = b = 3; 
+	})();
+
+	console.log("a defined? " + (typeof a !== 'undefined')); 
+	//a defined?
+	console.log("b defined? " + (typeof b !== 'undefined')); 
+	console.log(b); 
+	console.log(typeof a); 
+
+	//函数的引用
+	function fn(v)
+	{
+		console.log(v+"  "+typeof(v));
+	}
+
+	fn(function (){ console.log("function go"); });
+*/
+
+/*	function ajax(url,callback){
+		function getData(url){
+			//console.log(url);
+			console.log('coonnect... '+url+' wait data ready');
+			var data='a picture data .... ';
+			return data;
+		}
+		
+		callback(getData(url));
+	}
+	ajax('www.youku.com.avi',function(data){ console.log(data); })*/
+
+/*	function sum(x){
+		//系统提供的arguments函数
+		for(var i=0;i<arguments.length;i++){
+			console.log(arguments[i]);  // 遍历
+		}
+	}
+	sum(1,2,'ivan',4);*/
+//返回函数
+/*	function fn(a){
+		console.log('fn go  '+a);
+		return function(b){
+			console.log('fbak go  '+b+"   "+(a+b));
+		}
+	}
+	fn()();
+	fn(2)(3);*/
+//返回对象
+/*	function fun(){
+		return {
+			name:'ivan',
+			driver:function(){
+				console.log('I can driver ');
+			}
+		}
+	}
+	console.log(fun());
+	fun().driver();*/
+//面试题1
+/*	function foo(){
+		return 
+		{
+			bar: "hello"
+		}
+	}
+	console.log(foo().bar);*/
+
+//面试题2
+/*	function sum(x){
+		return function (y){
+			return x+y;
+		}
+	}	
+*/
+	function sum1(x,y){
+		if(arguments.length==2){
+			return x+y;
+		}
+		else{
+			return function(y){
+				return x+y;
+			}
+		}
+	}
+	console.log(sum1(2,3));
+	console.log(sum1(2)(3));
+	
+</script>
+<!-- 1. (1)10
+   (2)出错信息，b is not undefined，程序在此处停止运行，不会出现30
+   (3)30 -->
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串与正则</title>
+</head>
+<body>
+	<script>
+/*		var str='my name is ican';
+		var strN=new String('my name is dan');
+		console.log(str);
+		console.log(strN);
+		var name='ivan';
+		console.log(name.charAt(2));
+		console.log(name.indexOf('n'));
+		var comand='go to beijing';
+		console.log(comand.indexOf('to1'));*/
+
+		//实现indexOf函数
+/*		function indexOf(a,c){
+			for(var i=0;i<a.length;i++){
+				if(a[i]==c)
+					return i;
+			}
+			return -1;
+		}
+		indexOf(comand,'b');
+		var date='chengdu kehua road 99号,2016.8.30';
+		console.log(date.slice(-4));
+		//字符串的连接
+		var str1='my name',age=30,data1=2016,com='Farsight';
+		var str=str1.concat(age);
+		console.log(str);
+		console.log(str1.concat(age,data1,com));*/
+		//实现concat函数
+/*		function concat(a1,a2){
+			var n=[];
+			for(var i=0;i<a1.length;i++){
+				n[n.length] = a1[i];
+			}
+
+			for(var i=0;i<a2.length;i++){
+				n[n.length] = a2[i];
+			}
+			return n;
+		}
+		console.log(concat(str1,age).toString());*/
+
+//----------------分割字符串为数组
+/*		var addr='china-chengdu-kehua-99-201';
+		console.log(addr.split('-'));
+		console.log(addr.split('-').join('-'));
+		console.log(addr.search('99'));//同indexOf(),
+		console.log(addr.search('44'));//找不到返回-1
+		console.log(addr.search(/\d/));
+		console.log(addr.match('kehua'));
+		console.log(addr.match('ds'));
+		console.log(addr.match(/\d/));
+
+		console.log(addr.replace('201','901'));
+		console.log(addr.replace(/\d+/,''));//删数字
+*/
+//正则表达式
+/*		var str='i do 36m2 a big3 apple did';
+		console.log(str.search(/\d/));
+		var re=/\d/;
+		console.log(re.test('my socre=89'));//检测re这个里面是否含有数字；
+		var re1=/^\d/;//行首是不是数字
+		console.log(re1.test('dgufu dvjfhg836r'));
+		var re2=/com$/;//是否是com结尾的；
+		console.log(re2.test('www.baidu.com'));
+		var re3=/^\d{4,6}$/;//是否首位都是数字,4到6位，
+		console.log(re3.test('123445'));*/
+//验证一年的12个月
+/*		var re=/^[1-9]$/;//123456789
+		console.log(re.test('9'));
+		var re=/^0[1-9]$/;//01,02,03,04,05,06,07,08,09;
+		console.log(re.test('05'));
+		var re=/^1[012]$/;//10,11,12
+		console.log(re.test('11'));*/
+		//var re=/([1-9])|(0[1-9])|(1[012])/;
+/*
+		var re=/0?[1-9]|1[012]/;
+
+		console.log(re.test('11'));
+		console.log(re.test('05'));
+		console.log(re.test('9'));*/
+
+		var str='yzglin@163.com';
+//----------------------邮箱检测
+	//验证身份证号	/^\d{15}|\d{18}$/
+	//只能输入0或者非零的数字	/^(0|[1-9][0-9]*)$/
+	//验证是否含有^%&',;=?$等字符 /[^%&',;=?$]+/
+	//验证Email地址：
+dd=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)$/
+	//验证InternetURL（如：http://www.baidu.com）
+ //dd1=/^http://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$/
+//======================面试题，判断是否是回文
+	var str='Leavael';
+	function checkData(s){
+		s=s.toLowerCase();
+		if(s==s.split('').reverse().join(''))
+			return true;
+		else 
+			return false;
+	}
+	console.log(checkData(str));
+	</script>
+	<input id="txt1" type="text" />
+	<input id="btn1" type="button" value="校验" />
+	<script type="text/javascript">
+	    var oTxt=document.getElementById('txt1');
+		var oBtn=document.getElementById('btn1');
+		oBtn.onclick=function(){
+			var re=/^\w+@[a-z0-9]+\.[a-z]{2,4}$/;
+			/*
+			/^\w+  行首支持大小写字母、数字、下划线，+表示可以多个
+			@[a-z0-9] 表示@后面是小写字母或者数字
+			\. 转义.字符
+			[a-z]{2,4}$ 尾部2-4个小写字母
+			 */
+			
+			if(re.test(oTxt.value)){
+					alert("对了");
+			}else{
+					alert("填错了");
+			}
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{
+   margin:0;
+   padding:0;
+}
+#area{
+   background:#CCC;
+   border:4px dashed #0FF;
+   width:400px;
+   height:270px;
+   border-radius:10px;
+   overflow:hidden;
+   margin:0 auto;
+   margin:20px;
+}
+li{
+   height:30px;
+   line-height:30px;	
+}
+</style>
+</head>
+
+<body>
+<div id="area">
+    <ul id="con1">
+        <li><a href="#">1.学会html5 绝对的屌丝逆袭（案例）</a><span>2013-09-18</span></li>
+        <li><a href="#">2.tab页面切换效果（案例）</a><span>2013-10-09</span></li>
+        <li><a href="#">3.圆角水晶按钮制作（案例）</a><span>2013-10-21</span></li>
+        <li><a href="#">4.HTML+CSS基础课程(系列)</a><span>2013-11-01</span></li>
+        <li><a href="#">5.分页页码制作（案例）</a><span>2013-11-06</span></li>
+        <li><a href="#">6.导航条菜单的制作（案例）</a><span>2013-11-08</span></li>
+        <li><a href="#">7.信息列表制作(案例)</a><span>2013-11-15</span></li>
+        <li><a href="#">8.下拉菜单制作(案例)</a><span>2013-11-22</span></li>
+        <li><a href="#">9.如何实现“新手引导”效果</a><span>2013-12-06</span></li>
+    </ul>
+    <ul id="con2"></ul>
+</div>
+<script>
+var area=document.getElementById("area");
+var iliHeight=30,
+    timer,
+	speed=50,
+	delay=1000;
+area.scrollTop=0;
+area.innerHTML+=area.innerHTML;
+function startMove(){
+    timer=setInterval("scrollup()",speed);
+	area.scrollTop++;	
+}
+function scrollup() {	
+	if(area.scrollTop % iliHeight==0) {
+	   clearInterval(timer);
+	   setTimeout(startMove,delay);
+	}else{
+	   area.scrollTop++;
+	   if(area.scrollTop>=area.scrollHeight/2) {
+		   area.scrollTop=0;   
+	   }
+	}
+}
+setTimeout(startMove,delay);
+</script>
+</body>
+</html>

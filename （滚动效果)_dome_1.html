@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>滚动效果</title>
+<style type="text/css">
+*{
+  margin:0;
+  padding:0;	
+}
+#area{
+  width:255px;
+  background:#FCC;
+  border:2px solid #63C;
+  height:180px;	
+  margin:0 auto;
+  margin-top:20px;
+  overflow:hidden;
+}
+li{
+   height:30px;	
+}
+</style>
+</head>
+
+<body>
+<div id="area">
+  <ul id="con1">
+    <li>天然他人恶如方便和</li>
+    <li>如发热服人回复五队额度</li>
+    <li>为欧瑞哦亲爱了解迟到</li>
+    <li>洗面奶吹牛逼额得杜</li>
+    <li>个人发言人购房入户哦</li>
+    <li>俄语翻译如夫人</li>
+  </ul>
+  <ul id="con2"></ul>
+</div>
+<script type="text/javascript">
+   var area=document.getElementById("area");
+   var con1=document.getElementById("con1");
+   var con2=document.getElementById("con2");
+   con2.innerHTML=con1.innerHTML;
+   var time=100;
+   area.scrollTop=0;
+function scrollup() {
+   if(area.scrollTop>=con1.offsetHeight){
+	  area.scrollTop=0;   
+   }else{
+	  area.scrollTop++;
+   }  
+}
+var myscroll=setInterval("scrollup()",time);
+area.onmousemove=function (){
+   clearInterval(myscroll);	
+}
+area.onmouseout=function () {
+    myscroll=setInterval("scrollup()",time);	
+}
+</script>
+</body>
+</html>

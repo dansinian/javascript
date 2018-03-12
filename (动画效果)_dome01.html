@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>缓冲动画效果</title>
+<style type="text/css">
+*{
+ margin:0;
+ padding:0;	
+}
+ #title{
+	 background:red;
+	 position:relative;
+	 left:-300px;
+	 width:300px;
+	 height:200px;
+	 color:#fff;
+	 text-align:center; 
+ }
+ #title span{
+	 background:#00F;
+	 position:absolute;
+	 left:300px;
+	 width:40px;
+	 height:40px;
+ }
+</style>
+<script type="text/javascript">
+window.onload=function () {
+   var title=document.getElementById("title");
+   title.onmouseover=function() {
+	  stopmove(0);
+   }
+   title.onmouseout=function () {
+	   stopmove(-300);
+   }
+}
+
+var timer=null;
+function stopmove(Target){
+	clearInterval(timer);
+   var title=document.getElementById("title");
+   timer=setInterval(function () {
+	   var speed=(Target-title.offsetLeft)/20;
+	   speed=speed>0?Math.ceil(speed):Math.floor(speed);
+	   if(title.offsetLeft==Target){
+		   clearInterval(timer);
+	   }
+	   else{
+	   title.style.left=title.offsetLeft+speed+"px";
+	   }
+	   },30);
+      
+}
+</script>
+</head>
+
+<body>
+<div id="title">
+ <span id="share">分享</span>
+</div>
+</body>
+</html>

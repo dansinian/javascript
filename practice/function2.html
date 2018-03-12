@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域</title>
+</head>
+<body>
+	<script>
+//函数内定义
+/*	function fun(){
+		count = 3;
+		var Icount = 5;
+		console.log(Icount);
+	}
+	fun();
+	console.log(count);
+	console.log(Icount);*/
+
+//定义声明的提升
+/*	function getName(){
+		console.log(5);
+	}
+
+	var getName = function(){
+		console.log(4);
+	}
+	getName();*/
+
+/*	var name = 'ivan';
+	var country='china';
+	function fn(){
+
+		var age=30;
+		console.log(age);
+		console.log(name);
+
+		function fn(){
+
+			var city='chengdu';
+			console.log(age);
+			console.log(city);
+		}
+		fn();
+
+	}
+	console.log(name);
+	fn();*/
+	
+/*	var country='chian',age=80;
+	function fn(){
+		console.log('2 level country is '+country);  //undefined
+		var country = 'yindu';
+		var name1='ivan';
+		var age = 30;
+		function fn(){
+			console.log('3 level name is '+name1); //ivan
+			age = 8;
+		} 
+		fn();
+		console.log('2 level age is '+age); //8
+	}
+	fn();
+	console.log('1 level name is '+name1); //出错，程序停止
+	console.log('1 level age is '+age);//不会输出*/
+
+/*	function fn1(){
+		console.log('i = ',i);
+	}
+	var a = [];
+	function fn(callback){
+		for(i=0;i<3;i++){
+			a[i] = callback;
+			//console.log(a[i]);
+		}
+		callback();
+	}
+	fn(fn1);
+	a[0]();
+	a[1]();*/
+
+/*	person = {
+		name:'ivan',
+		age:35,
+		wife:{name:'lina',age:32}
+	};
+	with(person.wife){
+		console.log(age);
+	}
+	console.log(age);*/
+
+/*	(function (){
+		var a=b=3;
+		//b=3;
+		//a=b;
+		//var a;
+		console.log("dd");
+	})();
+//不能访问函数里面定义的变量
+	console.log("a defined? "+(typeof a !== 'undefined'));
+	console.log("b defined? "+(typeof b !== 'undefined'));
+	console.log(b);
+	console.log(typeof a);
+
+	function aa(){
+		console.log("ddd");
+	}
+	aa();*/
+
+/*	function doSomething(){
+		var authorName="创客学院";
+		blogName="Web全栈";
+		alert(authorName);
+	}
+	doSomething(); //
+	alert(blogName); //
+	alert(authorName); //*/
+
+/*	var authorName="小美老师";
+	function doSomething(){
+		var blogName="ivan";
+		function innerSay(){
+		alert(blogName);
+		}
+		innerSay();
+	}
+	alert(authorName); //
+	alert(blogName); //
+	doSomething(); //
+	innerSay() //*/
+
+//闭包
+/*	//1.
+	var aa;
+	function fn(){
+		var count = 0;
+		function fn1(){//局部函数
+			console.log(count++);
+		}
+		//aa = fn1;
+		return fn1;
+
+	}
+	var p=fn();
+	//后面的值会驻留，信息的保存
+	p();p();p();p();p();p();
+
+	fn()();
+	fn()();
+	fn()();
+	fn()();
+	fn()();
+	//aa();*/
+
+	// 2.
+/*	var fn;
+	var person = function(){
+		var _name='yzg';
+		var _count=0;
+		function getName(){
+			_count++;
+			return _name;
+		}
+		fn = getName;
+		function getCount(){return _count};
+		return getCount;
+	}
+	var p = person();
+	console.log(fn());
+	console.log('call count...'+p());
+	console.log(fn());
+	console.log(fn());
+	console.log('call name...'+p());*/
+
+	//3.引用在，空间不灭
+/*	function fn(){
+		var _num=7;
+		return function (){
+			console.log(_num);
+			return ++_num;
+		}
+	}
+
+	fn()();fn()();fn()();
+
+	var p = fn();	//全局变量存放内部函数的引用
+	p();p();p();p();p();
+	var p1=fn();
+	p1();p1();p1();p1();*/
+
+	//4.共享封闭空间
+/*	function fn(){
+		var num = 0;
+		return {
+			add1:function(){
+				num++;
+				console.log(num);
+			},
+			add2:function(){
+				num+=2;
+				console.log(num);
+			}
+		}
+	}
+
+	var c=fn();
+	c.add1();
+	c.add2();
+	c.add1();*/
+
+	//5.快照，新的备份
+/*	function fun(a){
+		return function(b){
+			return function(c){
+				console.log(a+"+"+b+"+"+c+"="+(a+b+c));
+			}
+		}
+	}
+	var x=fun(3);//驻留了参数a的信息，
+	x(4)(5);
+	x(1)(2);
+	var z=fun(5)(6);//驻留了参数a，b的信息，
+	z(1);
+*/
+	// 6.链式调用
+/*	function fn(){
+		var _name='yzg';
+		//console.log('local ...' + _name);
+		function fnn(){
+			return {
+				getName:function(){console.log(_name);},
+				setName:function(v){_name = v;}
+			}
+		}
+		return fnn();
+	}
+	var w = fn();
+	w.getName();
+	w.setName('lili');
+	w.getName();
+	w.setName('ivan').getName();*/
+
+	//面试题1
+/*	var buttons=[{name:'b1'},{name:'b2'},{name:'b3'}];
+	
+	function bind(){
+		for(var i=0;i<buttons.length;i++){
+			//每次运行，都创建了新的匿名函数空间；
+			(function (num){
+				buttons[num].onclick=function (){
+				console.log(num);
+			}
+			})(i);
+		}
+	}
+	bind();
+	buttons[0].onclick();
+	buttons[1].onclick();
+	buttons[2].onclick();*/
+
+	//面试2
+/*	function fun(n,o){
+		console.log(o);
+		return{
+			fun:function(m){
+				return fun(m,n);
+			}
+		};
+	}
+	var a=fun(0);	a.fun(1);	a.fun(2);	a.fun(3);
+	console.log(a);
+	var b=fun(0).fun(1).fun(2).fun(3)
+	//(n,o),(m)
+	//(0,o),(1) -->(1,0)-->console.log(0)-->(2,1)-->conosle.log(1)-->(3,2)-->console.log(2);
+	var c=fun(0).fun(1);	c.fun(2); c.fun(3);
+	//c-->console.log(0),[(0,o),(1)(1,0)]
+	//-->m=2,n=1,*/
+
+	var buttons = [{name:'b1'},{name:'b2'},{name:'b3'}];
+	function bind(){
+		for (var i = 0; i < buttons.length; i++) {
+			(function(num){
+				buttons[num].onclick=function(){
+					console.log(num);
+				}
+			})(i);
+		}
+	};
+	bind();
+	buttons[0].onclick(); //共享封闭空间bind
+	buttons[1].onclick();
+	buttons[2].onclick();
+		</script>
+</body>
+</html>

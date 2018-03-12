@@ -1,0 +1,34 @@
+*{
+    margin:0;
+    padding:0;
+}
+.title{
+    color:#f00;
+    margin:0 auto;
+    font-size:24px;
+    width:400px;
+    margin-top:20px;
+    letter-spacing: 0.5em;
+    font-weight:bold;
+    margin-bottom:20px;
+    text-align:center;
+}
+#main{
+    margin:0 auto;
+    width:230px;
+    text-align:center;
+}
+#main span {
+    display:block;
+    float:left;
+    background: #003366;
+    font-size:20px;
+    color:#fff;
+    margin-right:20px;
+    width:80px;
+    height:28px;
+    line-height:28px;
+    border:1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+}
